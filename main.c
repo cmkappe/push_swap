@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/11 04:38:28 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:42:17 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,30 @@ static void	leaks(void)
 int main (int ac, char **av)
 {
 	int	*array;
+	int	size;
 	
 	atexit (leaks);
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-		array = init_arr_str(av);
-	if (ac > 2)
-		array = init_arr_int(ac, av);
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
+		array = init_arr_str(av, &size);
+	// if (ac > 2)
+	else
+		array = init_arr_int(ac, av, &size);
+	if (!array)
+	{
+		printf("Error in init_arr!\n");
+		return (1);
+	}
+	
+	if (check_data(array, size))
+	{
+		free(array);
+		return (1);
+		
+	}	
 	int i = 0;
-	while (array[i])
+	while (i < size)
 		printf("%d\n", array[i++]);
 	free(array);
 	return (0);

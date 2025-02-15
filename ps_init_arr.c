@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_input.c                                         :+:      :+:    :+:   */
+/*   ps_init_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/11 04:41:45 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/02/12 16:45:46 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*init_arr_str(char **av)
+int	*init_arr_str(char **av, int *size)
 {
 	char	**stack_data;
 	int		*array;
 	int		i;
-	int		word_count;
 
 		stack_data = ft_split(av[1]);
-		word_count = count_words(av[1]);
-		if (!(array = (int *)malloc(sizeof(int) * word_count)))
+		*size = count_words(av[1]);
+		if (!(array = (int *)malloc(sizeof(int) * (*size))))
 			return (NULL);
 		i = 0;
 		while (stack_data[i])
 		{
-			array[i] = atoi(stack_data[i]);
+			array[i] = ft_atoi(stack_data[i]);
 			i++;
 		}
 		i = 0;
@@ -36,21 +35,19 @@ int	*init_arr_str(char **av)
 		return (array);
 }
 
-int	*init_arr_int(int ac, char **av)
+int	*init_arr_int(int ac, char **av, int *size)
 {
-	int		word_count;
 	int		*array;
 	int		i;
 
-	word_count = ac - 1;
-	if (!(array = (int *)malloc(sizeof(int) * word_count)))
+	*size = ac - 1;
+	if (!(array = (int *)malloc(sizeof(int) * (*size))))
 			return (NULL);
 	i = 0;
-		while (word_count > 0)
+		while (i < *size)
 		{
-			array[i] = atoi(av[i + 1]);
+			array[i] = ft_atoi(av[i + 1]);
 			i++;
-			word_count--;
 		}
 	return (array);
 }

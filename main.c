@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/12 17:42:17 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/16 02:49:39 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int main (int ac, char **av)
 	int i = 0;
 	while (i < size)
 		printf("%d\n", array[i++]);
+	
 	free(array);
 	return (0);
 }
@@ -54,7 +55,7 @@ int main (int ac, char **av)
 
 	
 	// splited = ft_split(test);
-	// while (*splited) // Correct the loop to check for the end of the array
+	// while (*splited)
 	// {
 	// 	printf("%s\n", *splited);
 	// 	splited++;

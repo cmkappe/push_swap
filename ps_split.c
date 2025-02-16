@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 01:43:58 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/12 16:58:34 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/16 01:14:34 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char **ft_split(char *str)
 			i++;
 		if (j < i)
 		{
-			out[k] = ft_strndup(&str[j], i - j);// or plus two to account for null terminator to mimic ac?
+			out[k] = strndup(&str[j], i - j);// or plus two to account for null terminator to mimic ac?
 			if (!out[k])
 			{
 				free_split(out, k - 1);

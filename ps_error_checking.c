@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:45:06 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/12 19:43:47 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/16 02:46:33 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	check_data(int *arr, int size)
 	if (check_duplicates(arr, size))
 	{
 		printf("Error: duplicates!");
+		free (arr);
 		return (1);
 	}
 	return (0);

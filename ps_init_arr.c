@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/12 16:45:46 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/16 02:57:15 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int	*init_arr_str(char **av, int *size)
 		i = 0;
 		while (stack_data[i])
 		{
+			if (!is_valid_int(stack_data[i])) // Input validation
+			{
+			free_split(stack_data, i - 1);
+			free(array);
+			return (NULL);
+			}
 			array[i] = ft_atoi(stack_data[i]);
 			i++;
 		}
@@ -46,6 +52,11 @@ int	*init_arr_int(int ac, char **av, int *size)
 	i = 0;
 		while (i < *size)
 		{
+			if (!is_valid_int(av[i + 1]))
+			{
+			free(array);
+			return (NULL);
+			}
 			array[i] = ft_atoi(av[i + 1]);
 			i++;
 		}

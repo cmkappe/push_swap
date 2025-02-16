@@ -6,13 +6,13 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:10:02 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/02/12 17:02:10 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/16 02:59:10 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     count_words (char *str)
+int     count_words(char *str)
 {
     int     wc;
 
@@ -27,7 +27,7 @@ int     count_words (char *str)
             str++;
     }
     return (wc);
-}	
+}
 
 char	*ft_strndup(const char *src, int len)
 {
@@ -102,6 +102,5 @@ int	ft_atoi(const char *str)
 			return (0);
 		i++;
 	}
-	
 	return ((int)result * sign);
 }

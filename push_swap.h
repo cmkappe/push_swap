@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/16 03:01:32 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/17 00:59:27 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void	reverse_rotate(int *stack, int size);
 void	rra (int *stack_a, int size_a);
 void	rrb (int *stack_b, int size_b);
 void	rrr (int *stack_a, int size_a, int *stack_b, int size_b);
+
+
+int		*map_to_ranks(int *arr, int size);
+
 
 
 #endif

@@ -6,16 +6,16 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/17 00:42:31 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/21 20:23:27 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	leaks(void)
+/* static void	leaks(void)
 {
 	system ("leaks a.out");
-}
+} */
 
 int main(int ac, char **av)
 {
@@ -24,8 +24,9 @@ int main(int ac, char **av)
 	int	size_a;
 	int	size_b;
 	int	i;
+	int	*mapped;
 	
-	atexit (leaks);
+	// atexit (leaks);
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
 	else if (ac == 2)
@@ -44,7 +45,18 @@ int main(int ac, char **av)
 		return (1);
 	}
 
-	// initialization of stack_b
+	mapped = map_to_ranks(stack_a, size_a);
+	if (!mapped)
+	{
+		printf("Error in mapping to ranks!\n");
+		free(stack_a);
+		return (1);
+	}
+	free(stack_a);
+	stack_a = mapped;
+
+	
+	// initializing stack_b as an empty stack
 	stack_b = (int *)malloc(sizeof(int) * size_a);
 	if (!stack_b)
 	{
@@ -52,37 +64,31 @@ int main(int ac, char **av)
 		return (1);
 	}
 	size_b = 0;
-	i = 0;
 
-	// printing both stacks before any operation
-    printf("\n\nStack A initially:\n");
+
+
+/*     printf("\n\nStack A (mapped) initially:\n");
+	i = 0;
     while (i < size_a)
     {
         printf("%d ", stack_a[i]);
         i++;
-    }
+    } */
     printf("\n\nStack B initially is empty.\n\n");
 
-	// testing functionality of stacks with pb
-	pb(stack_a, &size_a, stack_b, &size_b);
-	pb(stack_a, &size_a, stack_b, &size_b);
+	// chunk sort
 
-    printf("After two pb operation:\n\n");
-    printf("Stack A:\n");
-    i = 0;
-    while (i < size_a)
-    {
-        printf("%d ", stack_a[i]);
-        i++;
-    }
-    printf("\nStack B:\n");
-    i = 0;
-    while (i < size_b)
-    {
-        printf("%d ", stack_b[i]);
-        i++;
-    }
-    printf("\n\n\n");
+	chunk_sort(stack_a, &size_a, stack_b, &size_b);
+
+	// print sorted stack_a
+/* 	printf("\nStack a after radix sort: \n");
+	i = 0;
+	while (i < size_a)
+	{
+		printf("%d ", stack_a[i]);
+		i++;
+	}
+	printf("\n"); */
 
 	free(stack_a);
 	free(stack_b);

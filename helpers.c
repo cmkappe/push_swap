@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:10:02 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/02/16 02:59:10 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/02/21 15:10:23 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,22 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)result * sign);
+}
+
+
+int	check_sorted_or_error(int *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (arr[i] > arr[i + 1])
+		{
+			write(1, "Error\n", 6);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

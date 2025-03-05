@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:10:02 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/02/21 15:10:23 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/05 16:01:30 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,24 @@ int     count_words(char *str)
             str++;
     }
     return (wc);
+}
+
+char	*ft_strncpy(char *dest, char *src, int len)
+{
+	int	i;
+
+	i = 0;
+	while (src[i] && i < len)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < len)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
 char	*ft_strndup(const char *src, int len)
@@ -106,14 +124,14 @@ int	ft_atoi(const char *str)
 }
 
 
-int	check_sorted_or_error(int *arr, int size)
+int	check_sorted_or_error(t_stack *arr)
 {
 	int	i;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < arr->size - 1)
 	{
-		if (arr[i] > arr[i + 1])
+		if (arr->arr[i] > arr->arr[i + 1])
 		{
 			write(1, "Error\n", 6);
 			return (0);

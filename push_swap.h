@@ -6,7 +6,7 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/21 20:13:43 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/04 19:16:36 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 #include <limits.h>
 #include <unistd.h>
 
+typedef	struct s_stack
+{
+	int	*arr;
+	int	size;
+}				t_stack;
+
+
 char 	**ft_split(char *str);
 void	free_split(char **out, int k);
 int     count_words (char *str);
@@ -29,72 +36,65 @@ int		check_data(int *arr, int size);
 int		*init_arr_str(char **av, int *size);
 int		*init_arr_int(int ac, char **av, int *size);
 
+int		check_sorted_or_error(t_stack *arr);
 
-void	ft_swap (int *stack, int size);
-void	sa (int	*stack_a, int size_a);
-void	sb (int	*stack_b, int size_b);
-void	ss(int *stack_a, int size_a, int *stack_b, int size_b);
+int		*copy_array(t_stack *arr);
+void	fill_mapping(t_stack *arr, int *copy, int *mapped);
+int		*map_to_ranks(t_stack *arr);
 
-void	push (int *src, int *src_size, int *dest, int *dest_size);
-void	pa (int *stack_a, int *size_a, int *stack_b, int *size_b);
-void	pb (int *stack_a, int *size_a, int *stack_b, int *size_b);
+void	ft_swap(t_stack *stack);
+void	sa(t_stack	*stack_a);
+void	sb(t_stack	*stack_b);
+void	ss(t_stack *stack_a, t_stack *stack_b);
 
-void	rotate (int *stack, int size);
-void	ra (int *stack_a, int size_a);
-void	rb (int *stack_b, int size_b);
-void	rr (int *stack_a, int size_a, int *stack_b, int size_b);
+void	push(t_stack stack_src, t_stack stack_dest);
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_a, t_stack *stack_b);
 
-void	reverse_rotate(int *stack, int size);
-void	rra (int *stack_a, int size_a);
-void	rrb (int *stack_b, int size_b);
-void	rrr (int *stack_a, int size_a, int *stack_b, int size_b);
+void	rotate(t_stack *stack);
+void	ra(t_stack *stack_a);
+void	rb(t_stack *stack_b);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+
+void	reverse_rotate(t_stack *stack);
+void	rra(t_stack *stack_a);
+void	rrb(t_stack *stack_b);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 
 
-int		get_max(int *stack_a, int *size_a);
+/* int		get_max(int *stack_a, int *size_a);
 int		get_bit_count(int max);
 void	process_bit_pass(int bit_index, int *stack_a, 
 			int *size_a, int *stack_b, int *size_b);
-void	radix_sort_stack(int *stack_a, int *size_a, int *stack_b, int *size_b);
+void	radix_sort_stack(int *stack_a, int *size_a, int *stack_b, int *size_b); */
 
+void	sort_three(t_stack *stack);
 
-void 	chunk_sort(int *stack_a, int *size_a, int *stack_b, int *size_b);
-void	 process_chunk(int *stack_a, int *size_a, int *stack_b, int *size_b,
-					int low, int high);
-int		find_best_spot(int *stack_a, int size_a, int value);
-void 	bring_to_top_both(int *stack_a, int *size_a, int index_a,
-						int *stack_b, int *size_b, int index_b);
-void 	bring_to_top_both_down(int *stack_a, int *size_a, int moves_a,
-                            int *stack_b, int *size_b, int moves_b);
-void	bring_to_top_both_up(int *stack_a, int *size_a, int moves_a,
-							int *stack_b, int *size_b, int moves_b);
-void	finish_rotate_down(int *stack, int size, int diff, char stack_name);
-void 	finish_rotate_up(int *stack, int size, int diff, char stack_name);
-void 	simultaneous_rotate_down_common(int *stack_a, int size_a, int *stack_b, int size_b, int common);
-void 	simultaneous_rotate_up_common(int *stack_a, int size_a, 
-									int *stack_b, int size_b, int common);
-void	 bring_to_top(int *stack, int *size, int index, char stack_name);
-void 	rotate_down(int *stack, int size, int count, char stack_name);
-void	 rotate_up(int *stack, int size, int count, char stack_name);
-int		find_index_of_max(int *stack, int size);
-int		find_index_in_chunk(int *stack, int size, int low, int high);
-int		find_bottom_index_in_chunk(int *stack, int size, int low, int high);
-int		find_top_index_in_chunk(int *stack, int size, int low, int high);
-void 	get_chunk_limits(int chunk_index, int size, int *low, int *high);
-int 	decide_chunks(int size);
+void 	chunk_sort(t_stack *stack_a, t_stack *stack_b);
+void	process_chunk(t_stack *stack_a, t_stack *stack_b,
+						int low, int high);
+int		find_best_spot(t_stack *stack_a, int value);
+void	bring_to_top_both_struct(t_stack *stack_a, int index_a, 
+								t_stack *stack_b, int index_b);
 
-
-int	check_sorted_or_error(int *arr, int size);
-
-int	*copy_array(int *arr, int size);
-void	bubble_sort(int *arr, int size);
-void	fill_mapping(int *arr, int *copy, int *mapped, int size);
-int	*map_to_ranks(int *arr, int size);
-
-
-
-
-
+void 	bring_to_top_both_down(t_stack *stack_a, int moves_a,
+								t_stack *stack_b, int moves_b);
+void	bring_to_top_both_up(t_stack *stack_a, int moves_a,
+								t_stack *stack_b, int moves_b);
+void 	simultaneous_rotate_down_common(t_stack *stack_a, t_stack *stack_b, int common);
+void 	simultaneous_rotate_up_common(t_stack *stack_a, t_stack *stack_b, int common);
+void	finish_rotate_down(t_stack *stack, int diff, char stack_name);
+void 	finish_rotate_up(t_stack *stack, int diff, char stack_name);
+void	bring_to_top(t_stack *stack, int index, char stack_name);
+void 	rotate_down(t_stack *stack, int count, char stack_name);
+void	rotate_up(t_stack *stack, int count, char stack_name);
+int		find_index_of_max(t_stack *stack);
+int		find_index_in_chunk(t_stack *stack, int low, int high);
+int		find_bottom_index_in_chunk(t_stack *stack, int low, int high);
+int		find_top_index_in_chunk(t_stack *stack, int low, int high);
+void 	get_chunk_limits(int chunk_index, t_stack size, int *low, int *high);
+int 	decide_chunks(t_stack size);
 
 
 

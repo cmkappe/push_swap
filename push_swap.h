@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/04 19:16:36 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/05 16:51:00 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void	process_bit_pass(int bit_index, int *stack_a,
 void	radix_sort_stack(int *stack_a, int *size_a, int *stack_b, int *size_b); */
 
 void	sort_three(t_stack *stack);
+int		find_index_of_min(t_stack *stack);
+void	sort_five(t_stack *stack_a, t_stack *stack_b);
+
 
 void 	chunk_sort(t_stack *stack_a, t_stack *stack_b);
 void	process_chunk(t_stack *stack_a, t_stack *stack_b,
@@ -93,8 +96,8 @@ int		find_index_of_max(t_stack *stack);
 int		find_index_in_chunk(t_stack *stack, int low, int high);
 int		find_bottom_index_in_chunk(t_stack *stack, int low, int high);
 int		find_top_index_in_chunk(t_stack *stack, int low, int high);
-void 	get_chunk_limits(int chunk_index, t_stack size, int *low, int *high);
-int 	decide_chunks(t_stack size);
+void 	get_chunk_limits(int chunk_index, t_stack *stack, int *low, int *high);
+int 	decide_chunks(int size);
 
 
 

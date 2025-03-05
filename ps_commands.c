@@ -6,23 +6,23 @@
 /*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:35:23 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/02/19 03:05:54 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/05 10:25:25 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 // sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr
 
-void	ft_swap (int *stack, int size)
+void	ft_swap(t_stack *stack)
 {
 	int		temp;
 
 	temp = 0;
-	if (size > 1)
+	if (stack->size > 1)
 	{
-		temp = stack[0];
-		stack[0] = stack[1];
-		stack[1] = temp;
+		temp = stack->arr[0];
+		stack->arr[0] = stack->arr[1];
+		stack->arr[1] = temp;
 	}
 }
 
@@ -31,22 +31,22 @@ sa: swap the first two elements of stack A.
 sb: swap the first two elements of stack B.
 ss: swap both A and B at the same time. */
 
-void	sa (int	*stack_a, int size_a)
+void	sa(t_stack	*stack_a)
 {
-	ft_swap(stack_a, size_a);
+	ft_swap(stack_a);
 	printf("sa\n");
 }
 
-void	sb (int	*stack_b, int size_b)
+void	sb(t_stack	*stack_b)
 {
-	ft_swap(stack_b, size_b);
+	ft_swap(stack_b);
 	printf ("sb\n");
 }
 
-void	ss(int *stack_a, int size_a, int *stack_b, int size_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_swap(stack_a, size_a);
-	ft_swap(stack_b, size_b);
+	ft_swap(stack_a);
+	ft_swap(stack_b);
 	printf("ss\n");
 }
 
@@ -54,167 +54,117 @@ void	ss(int *stack_a, int size_a, int *stack_b, int size_b)
 pb: push the top element of stack a onto stack B;
 pa: push the top element of stack B onto stack A; */
 
-void	push (int *src, int *src_size, int *dest, int *dest_size)
+/* 				src				dest; */
+				
+void	push(t_stack stack_src, t_stack stack_dest)
 {
 	int		i;
 
-	if (*src_size <= 0)
+	if (stack_src.size <= 0)
 		return;
-	i = *dest_size;
+	i = stack_dest.size;
 	
 	while (i > 0) // shifts up destination stack
 	{
-		dest[i] = dest[i - 1];
+		stack_dest.arr[i] = stack_dest.arr[i - 1];
 		i--;
 	}
-	dest[0] = src[0];
+	stack_dest.arr[0] = stack_src.arr[0];
 	i = 0;
 
-	while (i < *src_size - 1)
+	while (i < stack_src.size - 1)
 	{
-		src[i] = src[i + 1];
+		stack_src.arr[i] = stack_src.arr[i + 1];
 		i++;
 	}
-	(*dest_size)++; // Update sizes
-    (*src_size)--;
+	(stack_dest.size)++; // Update sizes
+    (stack_src.size)--;
 }
 
-void	pb (int *stack_a, int *size_a, int *stack_b, int *size_b)
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	push (stack_a, size_a, stack_b, size_b);
+	push (*stack_a, *stack_b);
 	printf("pb\n");
 }
 
-void	pa (int *stack_a, int *size_a, int *stack_b, int *size_b)
+void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	push (stack_b, size_b, stack_a, size_a);
+	push (*stack_b, *stack_a);
 	printf("pa\n");
 }
 
 
 // ra, rb, rr
 
-void	rotate (int *stack, int size)
+void	rotate(t_stack *stack)
 {
 	int		i;
 	int		first;
 
-	if (size <= 1)
+	if (stack->size <= 1)
 		return;
 	i = 0;
-	first = stack[0];
-	while (i < size - 1)
+	first = stack->arr[0];
+	while (i < stack->size - 1)
 	{
-		stack[i] = stack[i + 1];
+		stack->arr[i] = stack->arr[i + 1];
 		i++;
 	}
-	stack[size - 1] = first;
+	stack->arr[stack->size - 1] = first;
 }
 
-void	ra (int *stack_a, int size_a)
+void	ra(t_stack *stack_a)
 {
-	rotate (stack_a, size_a);
+	rotate (stack_a);
 	printf("ra\n");
 }
 
-void	rb (int *stack_b, int size_b)
+void	rb(t_stack *stack_b)
 {
-	rotate (stack_b, size_b);
+	rotate (stack_b);
 	printf("rb\n");
 }
 
-void	rr (int *stack_a, int size_a, int *stack_b, int size_b)
+void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate (stack_a, size_a);
-	rotate (stack_b, size_b);
+	rotate (stack_a);
+	rotate (stack_b);
 	printf("rr\n");
 }
 
-void	reverse_rotate(int *stack, int size)
+void	reverse_rotate(t_stack *stack)
 {
 	int	i;
 	int	last;
-	if (size > 1)
+	if (stack->size > 1)
 	{
-		last = stack[size - 1];
-		i = size - 1;
+		last = stack->arr[stack->size - 1];
+		i = stack->size - 1;
 		while (i > 0)
 		{
-			stack[i] = stack[i - 1];
+			stack->arr[i] = stack->arr[i - 1];
 			i--;
 		}
-		stack[0] = last;
+		stack->arr[0] = last;
 	}
 }
 
-void	rra (int *stack_a, int size_a)
+void	rra(t_stack *stack_a)
 {
-	reverse_rotate (stack_a, size_a);
+	reverse_rotate (stack_a);
 	printf ("rra\n");
 }
 
-void	rrb (int *stack_b, int size_b)
+void	rrb (t_stack *stack_b)
 {
-	reverse_rotate (stack_b, size_b);
+	reverse_rotate (stack_b);
 	printf ("rrb\n");
 }
 
-void	rrr (int *stack_a, int size_a, int *stack_b, int size_b)
+void	rrr (t_stack *stack_a, t_stack *stack_b)
 {
-	reverse_rotate (stack_a, size_a);
-	reverse_rotate (stack_b, size_b);
+	reverse_rotate (stack_a);
+	reverse_rotate (stack_b);
 	printf ("rrr\n");
 }
 
-/* #include <unistd.h>
-
-static void	leaks_comm(void)
-{
-	system ("leaks a.out");
-}
-
-int main ()
-{
-	atexit (leaks_comm);
-	int stack_a[5] = {1, 2, 3, 7, 5};
-    int stack_b[5] = {7, 86, 536, 9, 87};
-    int size_a = 5;
-    int size_b = 5;
-    int i;
-
-    write(1, "Before rb:\nStack A: ", 21);
-    i = 0;
-    while (i < size_a)
-    {
-        printf("%d ", stack_a[i]);
-        i++;
-    }
-    printf("\nStack B: ");
-    i = 0;
-    while (i < size_b)
-    {
-        printf("%d ", stack_b[i]);
-        i++;
-    }
-    printf("\n");
-
-    rb(stack_b, size_b);
-
-    write(1, "After rb:\nStack A: ", 20);
-    i = 0;
-    while (i < size_a)
-    {
-        printf("%d ", stack_a[i]);
-        i++;
-    }
-    printf("\nStack B: ");
-    i = 0;
-    while (i < size_b)
-    {
-        printf("%d ", stack_b[i]);
-        i++;
-    }
-    printf("\n");
-
-    return 0;
-} */

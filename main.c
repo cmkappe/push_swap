@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/02/21 20:23:27 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/05 16:04:00 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int ac, char **av)
 		return (1);
 	}
 
-	mapped = map_to_ranks(stack_a, size_a);
+	mapped = map_to_ranks(stack_a);
 	if (!mapped)
 	{
 		printf("Error in mapping to ranks!\n");
@@ -78,7 +78,7 @@ int main(int ac, char **av)
 
 	// chunk sort
 
-	chunk_sort(stack_a, &size_a, stack_b, &size_b);
+	chunk_sort(stack_a, stack_b);
 
 	// print sorted stack_a
 /* 	printf("\nStack a after radix sort: \n");

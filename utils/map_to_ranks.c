@@ -6,11 +6,11 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:56:05 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/05 16:13:10 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 15:34:26 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	*copy_array(t_stack *arr)
 {
@@ -84,7 +84,7 @@ int	*map_to_ranks(t_stack *arr)
 	copy = copy_array(arr);
 	if (!copy)
 		return (NULL);
-	bubble_sort(copy);
+	bubble_sort(arr);
 	mapped = (int *)malloc(sizeof(int) * arr->size);
 	if (!mapped)
 	{

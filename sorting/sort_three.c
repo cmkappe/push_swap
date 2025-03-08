@@ -6,13 +6,11 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:44:00 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/05 15:38:02 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:50:48 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-// put check_if_sorted in front
+#include "../push_swap.h"
 
 /* test cases:
 

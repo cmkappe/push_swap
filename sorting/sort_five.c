@@ -6,11 +6,11 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:46:05 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/05 16:50:14 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 14:00:34 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	find_index_of_min(t_stack *stack)
 {
@@ -42,7 +42,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	while (stack_a->size > 3)
 	{
 		index = find_index_of_min(stack_a);
-		bring_to_top(stack_a, index, 'a');
+		bring_to_top_struct(stack_a, index, 'a');
 		pb(stack_a, stack_b);
 	}
 	sort_three(stack_a);
@@ -50,7 +50,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	{
 		value = stack_b->arr[0];
 		index_a = find_best_spot(stack_a, value);
-		bring_to_top(stack_a, index_a, 'a');
+		bring_to_top_struct(stack_a, index_a, 'a');
 		pa(stack_a, stack_b);
 	}
 }

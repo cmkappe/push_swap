@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_revrotate.c                                     :+:      :+:    :+:   */
+/*   revrotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:49 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/06 10:45:29 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:48:49 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	reverse_rotate(t_stack *stack)
 {
 	int	i;
 	int	last;
+
 	if (stack->size > 1)
 	{
 		last = stack->arr[stack->size - 1];

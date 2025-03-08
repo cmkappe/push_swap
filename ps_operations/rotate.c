@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_rotate.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:35 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/06 10:45:01 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:50:15 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rotate(t_stack *stack)
 {
@@ -18,7 +18,7 @@ void	rotate(t_stack *stack)
 	int		first;
 
 	if (stack->size <= 1)
-		return;
+		return ;
 	i = 0;
 	first = stack->arr[0];
 	while (i < stack->size - 1)

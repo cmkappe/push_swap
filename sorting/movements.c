@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_movements.c                                     :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:30:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/05 10:37:15 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/07 13:58:49 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void rotate_up(t_stack *stack, int count, char stack_name)
+void	rotate_up(t_stack *stack, int count, char stack_name)
 {
 	int	i;
 
@@ -25,11 +25,9 @@ void rotate_up(t_stack *stack, int count, char stack_name)
 			rb(stack);
 		i++;
 	}
-	
 }
 
-
-void rotate_down(t_stack *stack, int count, char stack_name)
+void	rotate_down(t_stack *stack, int count, char stack_name)
 {
 	int	i;
 
@@ -44,7 +42,8 @@ void rotate_down(t_stack *stack, int count, char stack_name)
 	}
 }
 
-void simultaneous_rotate_up_common(t_stack *stack_a, t_stack *stack_b, int common)
+void	simultaneous_rotate_up_common(t_stack *stack_a,
+										t_stack *stack_b, int common)
 {
 	int	i;
 
@@ -56,7 +55,8 @@ void simultaneous_rotate_up_common(t_stack *stack_a, t_stack *stack_b, int commo
 	}
 }
 
-void simultaneous_rotate_down_common(t_stack *stack_a, t_stack *stack_b, int common)
+void	simultaneous_rotate_down_common(t_stack *stack_a,
+										t_stack *stack_b, int common)
 {
 	int	i;
 
@@ -68,10 +68,10 @@ void simultaneous_rotate_down_common(t_stack *stack_a, t_stack *stack_b, int com
 	}
 }
 
-void finish_rotate_up(t_stack *stack, int diff, char stack_name)
+void	finish_rotate_up(t_stack *stack, int diff, char stack_name)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < diff)
 	{
@@ -86,7 +86,7 @@ void finish_rotate_up(t_stack *stack, int diff, char stack_name)
 void	finish_rotate_down(t_stack *stack, int diff, char stack_name)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < diff)
 	{
@@ -101,7 +101,7 @@ void	finish_rotate_down(t_stack *stack, int diff, char stack_name)
 void bring_to_top_struct(t_stack *stack, int index, char stack_name)
 {
 	int	moves;
-	
+
 	if (index <= (stack->size / 2))
 	{
 		moves = index;
@@ -128,12 +128,11 @@ void bring_to_top_struct(t_stack *stack, int index, char stack_name)
 	}
 }
 
-
 void bring_to_top_both_up(t_stack *stack_a, int moves_a,
 							t_stack *stack_b, int moves_b)
 {
 	int	common;
-	
+
 	if (moves_a < moves_b)
 		common = moves_a;
 	else
@@ -162,7 +161,8 @@ void bring_to_top_both_down(t_stack *stack_a, int moves_a,
 		finish_rotate_down(stack_b, moves_b - moves_a, 'b');
 }
 
-void bring_to_top_both_struct(t_stack *stack_a, int index_a, t_stack *stack_b, int index_b)
+void	bring_to_top_both_struct(t_stack *stack_a, int index_a,
+									t_stack *stack_b, int index_b)
 {
 	int	moves_a;
 	int	moves_b;
@@ -181,7 +181,7 @@ void bring_to_top_both_struct(t_stack *stack_a, int index_a, t_stack *stack_b, i
 		bring_to_top_both_down(stack_a, moves_a, stack_b, moves_b);
 	else
 	{
-		bring_to_top(stack_a, index_a, 'a');
-		bring_to_top(stack_b, index_b, 'b');
+		bring_to_top_struct(stack_a, index_a, 'a');
+		bring_to_top_struct(stack_b, index_b, 'b');
 	}
 }

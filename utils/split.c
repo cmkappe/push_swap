@@ -19,42 +19,66 @@ void	free_split(char **out, int k)
 	free(out);
 }
 
-char	**ft_split(char *str)
+static int	skip_whitespace(char *str, int i)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**out;
+	while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+		i++;
+	return (i);
+}
+
+static int	word_length(char *str, int i)
+{
+	int	len;
+
+	len = 0;
+	while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+	{
+		i++;
+		len++;
+	}
+	return (len);
+}
+
+static char	**fill_split(char *str, char **out)
+{
+	int	i;
+	int	index;
+	int	word_len;
 
 	i = 0;
-	j = 0;
-	k = count_words(str);
-	out = (char **)malloc(sizeof(char *) * (k + 1));
-	if (!out)
-		return (NULL);
-	k = 0;
+	index = 0;
 	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'|| str[i] == '\n'))
-			i++;
-		j = i;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
-			i++;
-		if (j < i)
-		{
-			out[k] = strndup(&str[j], i - j);
-			if (!out[k])
-			{
-				free_split(out, k - 1);
-				return (NULL);
-			}
-			k++;
-		}
+		i = skip_whitespace(str, i);
+		if (!str[i])
+			break ;
+		word_len = word_length(str, i);
+		out[index] = ft_strndup(&str[i], word_len);
+		if (!out[index])
+			return (NULL);
+		index++;
+		i += word_len;
 	}
-	out[k] = NULL;
+	out[index] = NULL;
 	return (out);
 }
 
+char	**ft_split(char *str)
+{
+	int		count;
+	char	**out;
+
+	count = count_words(str);
+	out = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!out)
+		return (NULL);
+	if (!fill_split(str, out))
+	{
+		free_split(out, count - 1);
+		return (NULL);
+	}
+	return (out);
+}
 
 /* char	**ft_split(char *str)
 {

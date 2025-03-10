@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/10 15:24:40 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 17:49:46 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ typedef struct s_stack
 
 
 void		free_split(char **out, int k);
-static int	skip_whitespace(char *str, int i);
-static int	word_length(char *str, int i);
-static char	**fill_split(char *str, char **out);
 char		**ft_split(char *str);
 
 
@@ -44,7 +41,6 @@ int			is_valid_int(const char *str);
 int			check_data(t_stack *arr);
 int			check_if_sorted(t_stack *arr);
 int			check_duplicates(t_stack *arr);
-static int	skip_special_char(const char *str);
 
 int			*copy_array(t_stack *arr);
 void		fill_mapping(t_stack *arr, int *copy, int *mapped);
@@ -80,6 +76,8 @@ void		sort_five(t_stack *stack_a, t_stack *stack_b);
 
 
 void		chunk_sort(t_stack *stack_a, t_stack *stack_b);
+void		partition_chunks(t_stack *stack_a, t_stack *stack_b);
+void		reassemble_stack(t_stack *stack_a, t_stack *stack_b);
 void		process_chunk(t_stack *stack_a, t_stack *stack_b,
 				int low, int high);
 int			find_best_spot(t_stack *stack_a, int value);
@@ -106,6 +104,20 @@ void		rotate_down(t_stack *stack, int count, char stack_name);
 void		rotate_up(t_stack *stack, int count, char stack_name);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+void		print_stack(t_stack *stack, char name);
 
 
 #endif

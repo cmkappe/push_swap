@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:10:02 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/07 22:02:03 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 14:19:21 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int	ft_atoi(const char *str)
 	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 	{
 		result = (result * 10) + (str[i] - '0');
-		if ((sign == 1 && result > INT_MAX) || (sign == -1 && -result < INT_MIN))
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && result > (long long)INT_MAX + 1))
 			return (0);
 		i++;
 	}
@@ -99,5 +100,5 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	if (*s == c)
 		return ((char *)s);
-	return ((char*)NULL);
+	return ((char *) NULL);
 }

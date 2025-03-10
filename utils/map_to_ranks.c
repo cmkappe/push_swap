@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:56:05 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/07 15:34:26 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 15:40:52 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,16 @@ void	fill_mapping(t_stack *arr, int *copy, int *mapped)
 
 int	*map_to_ranks(t_stack *arr)
 {
-	int	*copy;
-	int	*mapped;
+	int		*copy;
+	int		*mapped;
+	t_stack	temp;
 
 	copy = copy_array(arr);
 	if (!copy)
 		return (NULL);
-	bubble_sort(arr);
+	temp.arr = copy;
+	temp.size = arr->size;
+	bubble_sort(&temp);
 	mapped = (int *)malloc(sizeof(int) * arr->size);
 	if (!mapped)
 	{

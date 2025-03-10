@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:45:06 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/07 22:10:51 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 16:03:29 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_if_sorted(t_stack *arr)
 	return (1);
 }
 
-static int	skip_whitespace(const char *str)
+static int	skip_special_char(const char *str)
 {
 	int	i;
 
@@ -74,9 +74,9 @@ int	is_valid_int(const char *str)
 	int				sign;
 	long long		result;
 
-	i = skip_whitespace(str);
+	i = skip_special_char(str);
 	sign = 1;
-
+	result = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -88,9 +88,10 @@ int	is_valid_int(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = (result * 10) + (str[i] - '0');
-		if ((sign == 1 && result > INT_MAX) || (sign == -1 && -result < INT_MIN))
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && result > (long long)INT_MAX + 1))
 			return (0);
 		i++;
 	}
-	return (str[i] == '\0'); // Ensure the entire string was a valid number
+	return (str[i] == '\0');
 }

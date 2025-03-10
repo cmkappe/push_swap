@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/07 20:28:49 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 17:42:07 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 	system ("leaks a.out");
 } */
 
-int main(int ac, char **av)
+
+
+int	main(int ac, char **av)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 	int		size_a;
-	int		size_b;
+	// int		size_b;
 	int		i;
 	int		*temp;
 
@@ -44,10 +46,10 @@ int main(int ac, char **av)
 		printf("Error in init_arr!\n");
 		return (1);
 	}
-	
+
 	stack_a.arr = temp;
 	stack_a.size = size_a;
-	
+
 	/* validate data */
 	if (check_data(&stack_a))
 	{
@@ -76,20 +78,21 @@ int main(int ac, char **av)
 	stack_b.size = 0;
 	if (check_if_sorted(&stack_a))
 	{
-		write(1, "Error: already sorted!\n", 24);
+		// write(1, "Error: already sorted!\n", 24);
 		free(stack_a.arr);
 		free(stack_b.arr);
 		return (0);
 	}
 	if (stack_a.size == 3)
 		sort_three(&stack_a);
-	else if (stack_a.size == 5)
-		sort_five(&stack_a, &stack_b);
+	// else if (stack_a.size == 5)
+		// sort_five(stack_a, &stack_b);
 	else
 		chunk_sort(&stack_a, &stack_b);
 
 
-	/* Print final sorted stack */
+
+	// Print final sorted stack
 	printf("\nAfter sorting, Stack A: ");
 	i = 0;
 	while (i < stack_a.size)

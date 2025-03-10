@@ -6,19 +6,49 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:38:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/07 20:46:13 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/10 18:16:56 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+
+void	print_stack(t_stack *stack, char name)
+{
+	int	i;
+
+	printf("Stack %c: ", name);
+	for (i = 0; i < stack->size; i++)
+		printf("%d ", stack->arr[i]);
+	printf("\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
 void	process_chunk(t_stack *stack_a, t_stack *stack_b, int low, int high)
 {
 	int	index;
 	int	mid;
+	int	remaining;
 
 	mid = ((low + high) / 2);
-	while (1)
+	remaining = stack_a->size;
+
+	
+	printf("Processing chunk: [%d - %d]\n", low, high);
+
+
+	
+	while (remaining > 0)
 	{
 		index = find_index_in_chunk(stack_a, low, high);
 		if (index == -1)
@@ -31,7 +61,12 @@ void	process_chunk(t_stack *stack_a, t_stack *stack_b, int low, int high)
 		}
 		else
 			pb(stack_a, stack_b);
+		remaining--;
 	}
+
+	print_stack(stack_a, 'A');
+	print_stack(stack_b, 'B');
+
 }
 
 void	partition_chunks(t_stack *stack_a, t_stack *stack_b)
@@ -74,3 +109,26 @@ void	chunk_sort(t_stack *stack_a, t_stack *stack_b)
 	partition_chunks(stack_a, stack_b);
 	reassemble_stack(stack_a, stack_b);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

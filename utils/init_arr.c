@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/10 16:15:22 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 18:04:10 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	*init_arr_str(char **av, int *size)
 	{
 		if (!is_valid_int(stack_data[i])) // Input validation
 		{
-			free_split(stack_data, i - 1);
+			free_split(stack_data, i);
 			free(array);
 			return (NULL);
 		}

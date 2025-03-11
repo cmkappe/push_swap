@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/10 17:49:46 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 14:56:41 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		fill_mapping(t_stack *arr, int *copy, int *mapped);
 int			*map_to_ranks(t_stack *arr);
 void		bubble_sort(t_stack *arr);
 
-void		get_chunk_limits(int chunk_index, t_stack *stack,
+void		get_chunk_limits(int chunk_index, int total,
 				int *low, int *high);
 int			decide_chunks(int size);
 
@@ -71,17 +71,17 @@ void		rrb(t_stack *stack_b);
 void		rrr(t_stack *stack_a, t_stack *stack_b);
 
 void		sort_three(t_stack *stack);
-int			find_index_of_min(t_stack *stack);
 void		sort_five(t_stack *stack_a, t_stack *stack_b);
 
 
 void		chunk_sort(t_stack *stack_a, t_stack *stack_b);
-void		partition_chunks(t_stack *stack_a, t_stack *stack_b);
+// void		partition_chunks(t_stack *stack_a, t_stack *stack_b);
 void		reassemble_stack(t_stack *stack_a, t_stack *stack_b);
 void		process_chunk(t_stack *stack_a, t_stack *stack_b,
 				int low, int high);
 int			find_best_spot(t_stack *stack_a, int value);
 int			find_index_of_max(t_stack *stack);
+int			find_index_of_min(t_stack *stack);
 int			find_index_in_chunk(t_stack *stack, int low, int high);
 int			find_bottom_index_in_chunk(t_stack *stack, int low, int high);
 int			find_top_index_in_chunk(t_stack *stack, int low, int high);
@@ -102,6 +102,7 @@ void		finish_rotate_up(t_stack *stack, int diff, char stack_name);
 void		bring_to_top_struct(t_stack *stack, int index, char stack_name);
 void		rotate_down(t_stack *stack, int count, char stack_name);
 void		rotate_up(t_stack *stack, int count, char stack_name);
+void		final_rotate(t_stack *stack);
 
 
 

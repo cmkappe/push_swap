@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 00:25:27 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/07 15:24:40 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:35:58 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	decide_chunks(int size)
 {
-	if (size <= 100)
+	if (size < 10)
+		return (2);
+	else if (size >= 10 && size <= 100)
 		return (5);
 	else if (size <= 500)
 		return (10);
@@ -22,7 +24,22 @@ int	decide_chunks(int size)
 		return (20);
 }
 
-void	get_chunk_limits(int chunk_index, t_stack *stack, int *low, int *high)
+void	get_chunk_limits(int chunk_index, int total, int *low, int *high)
+{
+	int	chunk_size;
+	int	amount_chunks;
+
+	amount_chunks = decide_chunks(total);
+	chunk_size = total / amount_chunks;
+	*low = chunk_index * chunk_size;
+	if (chunk_index == amount_chunks - 1)
+		*high = total - 1;
+	else
+		*high = (chunk_index + 1) * chunk_size - 1;
+}
+
+
+/* void	get_chunk_limits(int chunk_index, t_stack *stack, int *low, int *high)
 {
 	int	chunk_size;
 	int	amount_chunks;
@@ -34,7 +51,9 @@ void	get_chunk_limits(int chunk_index, t_stack *stack, int *low, int *high)
 		*high = stack->size - 1;
 	else
 		*high = (chunk_index + 1) * chunk_size - 1;
-}
+} */
+
+
 
 /* int	find_index_in_chunk(int *stack, int size, int low, int high)
 {

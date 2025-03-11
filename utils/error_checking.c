@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:45:06 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/10 16:03:29 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 17:00:55 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_data(t_stack *arr)
 {
 	if (check_duplicates(arr))
 	{
-		printf("Error: duplicates!\n");
+		write(1, "Error: duplicates!\n", 20);
 		free (arr->arr);
 		return (1);
 	}

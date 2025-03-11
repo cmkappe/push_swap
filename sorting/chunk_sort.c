@@ -6,53 +6,21 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:38:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/10 18:16:56 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 18:00:36 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-void	print_stack(t_stack *stack, char name)
-{
-	int	i;
-
-	printf("Stack %c: ", name);
-	for (i = 0; i < stack->size; i++)
-		printf("%d ", stack->arr[i]);
-	printf("\n");
-}
-
-
-
-
-
-
-
-
-
-
-
-
 void	process_chunk(t_stack *stack_a, t_stack *stack_b, int low, int high)
 {
 	int	index;
 	int	mid;
-	int	remaining;
 
 	mid = ((low + high) / 2);
-	remaining = stack_a->size;
-
-	
-	printf("Processing chunk: [%d - %d]\n", low, high);
-
-
-	
-	while (remaining > 0)
+	index = find_index_in_chunk(stack_a, low, high);
+	while (index != -1)
 	{
-		index = find_index_in_chunk(stack_a, low, high);
-		if (index == -1)
-			break ;
 		bring_to_top_struct(stack_a, index, 'a');
 		if (stack_a->arr[0] <= mid)
 		{
@@ -61,30 +29,6 @@ void	process_chunk(t_stack *stack_a, t_stack *stack_b, int low, int high)
 		}
 		else
 			pb(stack_a, stack_b);
-		remaining--;
-	}
-
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-
-}
-
-void	partition_chunks(t_stack *stack_a, t_stack *stack_b)
-{
-	int	total;
-	int	num_chunks;
-	int	cur;
-	int	low;
-	int	high;
-
-	total = stack_a->size;
-	num_chunks = decide_chunks(total);
-	cur = 0;
-	while (cur < num_chunks)
-	{
-		get_chunk_limits(cur, stack_a, &low, &high);
-		process_chunk(stack_a, stack_b, low, high);
-		cur++;
 	}
 }
 
@@ -106,29 +50,40 @@ void	reassemble_stack(t_stack *stack_a, t_stack *stack_b)
 
 void	chunk_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	partition_chunks(stack_a, stack_b);
+	int	original_total;
+	int	num_chunks;
+	int	cur;
+	int	low;
+	int	high;
+
+	original_total = stack_a->size;
+	num_chunks = decide_chunks(original_total);
+	cur = 0;
+	while (cur < num_chunks)
+	{
+		get_chunk_limits(cur, original_total, &low, &high);
+		process_chunk(stack_a, stack_b, low, high);
+		cur++;
+	}
 	reassemble_stack(stack_a, stack_b);
+	final_rotate(stack_a);
 }
 
+/* void	partition_chunks(t_stack *stack_a, t_stack *stack_b)
+{
+	int	total;
+	int	num_chunks;
+	int	cur;
+	int	low;
+	int	high;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	total = stack_a->size;
+	num_chunks = decide_chunks(total);
+	cur = 0;
+	while (cur < num_chunks)
+	{
+		get_chunk_limits(cur, stack_a, &low, &high);
+		process_chunk(stack_a, stack_b, low, high);
+		cur++;
+	}
+} */

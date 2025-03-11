@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:30:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/10 18:25:08 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:59:50 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,34 +98,47 @@ void	finish_rotate_down(t_stack *stack, int diff, char stack_name)
 	}
 }
 
+void	final_rotate(t_stack *stack)
+{
+	int	min_index;
+
+	min_index = find_index_of_min(stack);
+	if (min_index <= stack->size / 2)
+	{
+		while (min_index-- > 0)
+			ra(stack);
+	}
+	else
+	{
+		while (min_index++ < stack->size)
+			rra(stack);
+	}
+}
+
 void bring_to_top_struct(t_stack *stack, int index, char stack_name)
 {
 	int	moves;
 
-	printf("Bringing %d (from %c) to top at index %d\n", stack->arr[index], stack_name, index);
-
 	if (index <= (stack->size / 2))
 	{
-		moves = index;
-		while (moves > 0)
+		moves = index + 1;
+		while (--moves > 0)
 		{
 			if (stack_name == 'a')
 				ra(stack);
 			else
 				rb(stack);
-			moves--;
 		}
 	}
 	else
 	{
-		moves = stack->size - index;
-		while (moves > 0)
+		moves = stack->size - index + 1;
+		while (--moves > 0)
 		{
 			if (stack_name == 'a')
 				rra(stack);
 			else
 				rrb(stack);
-			moves--;
 		}
 	}
 }
@@ -150,7 +163,7 @@ void bring_to_top_both_up(t_stack *stack_a, int moves_a,
 void bring_to_top_both_down(t_stack *stack_a, int moves_a,
                             t_stack *stack_b, int moves_b)
 {
-	int common;
+	int	common;
 
 	if (moves_a < moves_b)
 		common = moves_a;
@@ -168,9 +181,6 @@ void	bring_to_top_both_struct(t_stack *stack_a, int index_a,
 {
 	int	moves_a;
 	int	moves_b;
-
-	printf("Moving A[%d] to %d, B[%d] to %d\n", stack_a->arr[index_a], index_a, stack_b->arr[index_b], index_b);
-	
 
 	if (index_a <= ((stack_a->size) / 2))
 		moves_a = index_a;

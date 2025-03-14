@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 01:43:22 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/14 17:19:20 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 		temp = init_arr_int(ac, av, &size_a);
 	if (!temp)
 	{
-		write(1, "Error in init_arr!\n", 20);
+		write(2, "Error\n", 6);
 		return (1);
 	}
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 	temp = map_to_ranks(&stack_a);
 	if (!temp)
 	{
-		write(1, "Error in mapping!\n", 19);
+		write(2, "Error\n", 6);
 		free(stack_a.arr);
 		return (1);
 	}
@@ -70,7 +70,7 @@ int	main(int ac, char **av)
 	stack_b.size = 0;
 	if (check_if_sorted(&stack_a))
 	{
-		// write(1, "Error: already sorted!\n", 24);
+		write(2, "Error\n", 6);
 		free(stack_a.arr);
 		free(stack_b.arr);
 		return (0);

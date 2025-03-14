@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:43 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 16:50:12 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 16:59:49 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	push(t_stack *stack_src, t_stack *stack_dest)
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	push (stack_a, stack_b);
-	write(1, "pb\n", 4);
+	write(1, "pb\n", 3);
 }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	push (stack_b, stack_a);
-	write(1, "pa\n", 4);
+	write(1, "pa\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:49 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 16:50:39 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 17:00:06 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ void	reverse_rotate(t_stack *stack)
 void	rra(t_stack *stack_a)
 {
 	reverse_rotate (stack_a);
-	write(1, "rra\n", 5);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *stack_b)
 {
 	reverse_rotate (stack_b);
-	write(1, "rrb\n", 5);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	reverse_rotate (stack_a);
 	reverse_rotate (stack_b);
-	write(1, "rrr\n", 5);
+	write(1, "rrr\n", 4);
 }

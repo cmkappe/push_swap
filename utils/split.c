@@ -79,38 +79,3 @@ char	**ft_split(char *str)
 	}
 	return (out);
 }
-
-/* char	**ft_split(char *str)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	**out;
-
-	i = 0;
-	j = 0;
-	k = count_words(str);
-	if (!(out = (char **)malloc(sizeof(char *) * (k + 1))))
-		return (NULL);
-	k = 0;
-	while (str[i])
-	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'|| str[i] == '\n'))
-			i++;
-		j = i;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
-			i++;
-		if (j < i)
-		{
-			out[k] = strndup(&str[j], i - j);
-			if (!out[k])
-			{
-				free_split(out, k - 1);
-				return (NULL);
-			}
-			k++;
-		}
-	}
-	out[k] = NULL;
-	return (out);
-} */

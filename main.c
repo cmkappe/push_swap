@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/11 17:56:03 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:43:22 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	leaks(void)
+/* static void	leaks(void)
 {
 	system ("leaks push_swap");
-}
+} */
 
 
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 	// int		i;
 	int		*temp;
 
-	atexit (leaks);
+	// atexit (leaks);
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (0);
 
@@ -75,7 +75,9 @@ int	main(int ac, char **av)
 		free(stack_b.arr);
 		return (0);
 	}
-	if (stack_a.size == 3)
+	if (stack_a.size == 2)
+		sa(&stack_a);
+	else if (stack_a.size == 3)
 		sort_three(&stack_a);
 	else if (stack_a.size == 4 || stack_a.size == 5)
 		sort_five(&stack_a, &stack_b);
@@ -84,7 +86,7 @@ int	main(int ac, char **av)
 
 
 
-/* 	// Print final sorted stack
+/*   	// Print final sorted stack
 	printf("\nAfter sorting, Stack A: ");
 	i = 0;
 	while (i < stack_a.size)

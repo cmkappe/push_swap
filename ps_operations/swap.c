@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:29 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 14:34:53 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:50:22 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ void	ft_swap(t_stack *stack)
 void	sa(t_stack	*stack_a)
 {
 	ft_swap(stack_a);
-	write(1, "sa\n", 4);
+	printf("sa\n");
 }
 
 void	sb(t_stack	*stack_b)
 {
 	ft_swap(stack_b);
-	write(1, "sb\n", 4);
+	printf ("sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	write(1, "ss\n", 1);
+	printf("ss\n");
 }

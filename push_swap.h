@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/11 14:56:41 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:39:32 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int			find_index_in_chunk(t_stack *stack, int low, int high);
 int			find_bottom_index_in_chunk(t_stack *stack, int low, int high);
 int			find_top_index_in_chunk(t_stack *stack, int low, int high);
 
-void		bring_to_top_both_struct(t_stack *stack_a, int index_a,
+void		bring_to_top_both(t_stack *stack_a, int index_a,
 				t_stack *stack_b, int index_b);
 
 void		bring_to_top_both_down(t_stack *stack_a, int moves_a,
@@ -99,7 +99,7 @@ void		simultaneous_rotate_up_common(t_stack *stack_a,
 				t_stack *stack_b, int common);
 void		finish_rotate_down(t_stack *stack, int diff, char stack_name);
 void		finish_rotate_up(t_stack *stack, int diff, char stack_name);
-void		bring_to_top_struct(t_stack *stack, int index, char stack_name);
+void		bring_to_top(t_stack *stack, int index, char stack_name);
 void		rotate_down(t_stack *stack, int count, char stack_name);
 void		rotate_up(t_stack *stack, int count, char stack_name);
 void		final_rotate(t_stack *stack);
@@ -118,7 +118,8 @@ void		final_rotate(t_stack *stack);
 
 
 
-void		print_stack(t_stack *stack, char name);
+/* void		print_stack(t_stack *stack, char name);
+void		print_stack_test(t_stack *stack); */
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers_chunk_sort.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:27:51 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/11 16:59:09 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 16:08:09 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,28 +113,10 @@ int	find_index_of_min(t_stack *stack)
 int	find_best_spot(t_stack *stack_a, int value)
 {
 	int	i;
-
-	i = 0;
-	while (i < stack_a->size)
-	{
-		if (stack_a->arr[i] > value)
-			return (i);
-		i++;
-	}
-	return (0);
-}
-
-
-/* int	find_best_spot(t_stack *stack_a, int value)
-{
-	int	i;
 	int	best_index;
 
 	i = 0;
 	best_index = stack_a->size;
-
-	printf("Finding best spot for %d in A\n", value);
-	
 	while (i < stack_a->size)
 	{
 		if (stack_a->arr[i] > value)
@@ -145,30 +127,5 @@ int	find_best_spot(t_stack *stack_a, int value)
 		i++;
 	}
 
-	printf("Best spot for %d is index %d\n", value, best_index);
-
 	return (best_index);
-} */
-
-
-
-/* int	find_index_of_min(int *stack, int size)
-{
-	int	i;
-	int	min;
-	int	index;
-
-	i = 0;
-	min = stack[0];
-	index = 0;
-	while (i < size)
-	{
-		if (stack[i] < min)
-		{
-			min = stack[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-} */
+}

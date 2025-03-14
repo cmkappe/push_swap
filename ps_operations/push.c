@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:43 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 14:33:05 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:20:27 by chiarakappe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	push(t_stack *stack_src, t_stack *stack_dest)
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
 	push (stack_a, stack_b);
-	write(1, "pb\n", 4);
+	printf("pb\n");
 }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	push (stack_b, stack_a);
-	write(1, "pa\n", 4);
+	printf("pa\n");
 }

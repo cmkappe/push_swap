@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:35 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 14:34:26 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/07 13:50:15 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	rotate(t_stack *stack)
 void	ra(t_stack *stack_a)
 {
 	rotate (stack_a);
-	write(1, "ra\n", 4);
+	printf("ra\n");
 }
 
 void	rb(t_stack *stack_b)
 {
 	rotate (stack_b);
-	write(1, "rb\n", 4);
+	printf("rb\n");
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate (stack_a);
 	rotate (stack_b);
-	write(1, "rr\n", 4);
+	printf("rr\n");
 }

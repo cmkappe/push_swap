@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers_chunk_sort.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:27:51 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 16:08:09 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:41:14 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	find_index_in_chunk(t_stack *stack, int low, int high)
 {
 	int	top;
 	int	bottom;
-
 
 	top = find_top_index_in_chunk(stack, low, high);
 	bottom = find_bottom_index_in_chunk(stack, low, high);
@@ -108,24 +107,4 @@ int	find_index_of_min(t_stack *stack)
 		i++;
 	}
 	return (index);
-}
-
-int	find_best_spot(t_stack *stack_a, int value)
-{
-	int	i;
-	int	best_index;
-
-	i = 0;
-	best_index = stack_a->size;
-	while (i < stack_a->size)
-	{
-		if (stack_a->arr[i] > value)
-		{
-			best_index = i;
-			break ;
-		}
-		i++;
-	}
-
-	return (best_index);
 }

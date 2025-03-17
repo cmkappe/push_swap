@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 01:39:32 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:39:06 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ typedef struct s_stack
 	int	size;
 }				t_stack;
 
+int			parse_and_validate_args(int ac, char **av,
+				t_stack *stack_a, int *size);
+int			init_stack_b(t_stack *stack_b, int size_a);
+int			clean_exit(t_stack *stack_a, t_stack *stack_b, int code);
+void		select_sorting(t_stack *stack_a, t_stack *stack_b);
 
-void		free_split(char **out, int k);
+void		free_split(char **out);
 char		**ft_split(char *str);
-
 
 int			count_words(char *str);
 int			ft_atoi(const char *str);
@@ -73,7 +77,6 @@ void		rrr(t_stack *stack_a, t_stack *stack_b);
 void		sort_three(t_stack *stack);
 void		sort_five(t_stack *stack_a, t_stack *stack_b);
 
-
 void		chunk_sort(t_stack *stack_a, t_stack *stack_b);
 // void		partition_chunks(t_stack *stack_a, t_stack *stack_b);
 void		reassemble_stack(t_stack *stack_a, t_stack *stack_b);
@@ -103,23 +106,5 @@ void		bring_to_top(t_stack *stack, int index, char stack_name);
 void		rotate_down(t_stack *stack, int count, char stack_name);
 void		rotate_up(t_stack *stack, int count, char stack_name);
 void		final_rotate(t_stack *stack);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* void		print_stack(t_stack *stack, char name);
-void		print_stack_test(t_stack *stack); */
-
 
 #endif

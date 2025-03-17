@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_struct.c                                    :+:      :+:    :+:   */
+/*   finish_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 17:49:49 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/17 15:36:01 by ckappe           ###   ########.fr       */
+/*   Created: 2025/03/17 15:35:50 by ckappe            #+#    #+#             */
+/*   Updated: 2025/03/17 15:36:27 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rotate_up(t_stack *stack, int count, char stack_name)
+void	finish_rotate_up(t_stack *stack, int diff, char stack_name)
 {
 	int	i;
 
 	i = 0;
-	while (i < count)
+	while (i < diff)
 	{
 		if (stack_name == 'a')
 			ra(stack);
@@ -27,12 +27,12 @@ void	rotate_up(t_stack *stack, int count, char stack_name)
 	}
 }
 
-void	rotate_down(t_stack *stack, int count, char stack_name)
+void	finish_rotate_down(t_stack *stack, int diff, char stack_name)
 {
 	int	i;
 
 	i = 0;
-	while (i < count - 1)
+	while (i < diff)
 	{
 		if (stack_name == 'a')
 			rra(stack);
@@ -42,28 +42,13 @@ void	rotate_down(t_stack *stack, int count, char stack_name)
 	}
 }
 
-void	simultaneous_rotate_up_common(t_stack *stack_a,
-										t_stack *stack_b, int common)
+void	final_rotate(t_stack *stack)
 {
-	int	i;
+	int	min_index;
 
-	i = 0;
-	while (i < common)
-	{
-		rr(stack_a, stack_b);
-		i++;
-	}
-}
-
-void	simultaneous_rotate_down_common(t_stack *stack_a,
-										t_stack *stack_b, int common)
-{
-	int	i;
-
-	i = 0;
-	while (i < common)
-	{
-		rrr(stack_a, stack_b);
-		i++;
-	}
+	min_index = find_index_of_min(stack);
+	if (min_index <= stack->size / 2)
+		rotate_up(stack, min_index, 'a');
+	else
+		rotate_down(stack, stack->size - min_index, 'a');
 }

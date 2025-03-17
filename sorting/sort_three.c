@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 23:44:00 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/14 16:07:21 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/16 18:44:34 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	sort_three(t_stack *stack)
 {
-	int a = stack->arr[0];
-	int b = stack->arr[1];
-	int c = stack->arr[2];
+	int	a;
+	int	b;
+	int	c;
 
+	a = stack->arr[0];
+	b = stack->arr[1];
+	c = stack->arr[2];
 	if (a < b && b < c)
-		return;
+		return ;
 	else if (a > b && a < c)
 		sa(stack);
 	else if (a > b && b > c)

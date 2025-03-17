@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/11 18:04:10 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/17 16:35:44 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@ int	*init_arr_str(char **av, int *size)
 
 	stack_data = ft_split(av[1]);
 	*size = count_words(av[1]);
-	if (!(array = (int *)malloc(sizeof(int) * (*size))))
+	array = (int *)malloc(sizeof(int) * (*size));
+	if (!array)
 		return (NULL);
-	i = 0;
-	while (stack_data[i])
+	i = -1;
+	while (stack_data[++i])
 	{
-		if (!is_valid_int(stack_data[i])) // Input validation
-		{
-			free_split(stack_data, i);
-			free(array);
-			return (NULL);
-		}
+		if (is_valid_int(stack_data[i]))
+			exit (write(2, "Error\n", 6));
 		array[i] = ft_atoi(stack_data[i]);
-		i++;
+		if (array[i] < INT_MIN || array[i] > INT_MAX)
+			exit (write(2, "Error\n", 6));
 	}
-	i = 0;
-	while (stack_data[i])
-		free (stack_data[i++]);
+	i = -1;
+	while (stack_data[++i])
+		free (stack_data[i]);
 	free (stack_data);
 	return (array);
 }
@@ -53,12 +51,17 @@ int	*init_arr_int(int ac, char **av, int *size)
 	i = 0;
 	while (i < *size)
 	{
-		if (!is_valid_int(av[i + 1]))
+		if (is_valid_int(av[i + 1]))
 		{
-			free(arr);
-			return (NULL);
+			write(2, "Error\n", 6);
+			exit (1);
 		}
 		arr[i] = ft_atoi(av[i + 1]);
+		if (arr[i] < INT_MIN || arr[i] > INT_MAX)
+		{
+			write(2, "Error\n", 6);
+			exit (1);
+		}
 		i++;
 	}
 	return (arr);

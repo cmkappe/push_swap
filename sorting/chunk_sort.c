@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:38:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/14 16:08:20 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:40:45 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	find_best_spot(t_stack *stack_a, int value)
+{
+	int	i;
+	int	best_index;
+
+	i = 0;
+	best_index = stack_a->size;
+	while (i < stack_a->size)
+	{
+		if (stack_a->arr[i] > value)
+		{
+			best_index = i;
+			break ;
+		}
+		i++;
+	}
+	return (best_index);
+}
 
 void	process_chunk(t_stack *stack_a, t_stack *stack_b, int low, int high)
 {

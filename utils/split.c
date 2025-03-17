@@ -12,10 +12,10 @@
 
 #include "../push_swap.h"
 
-void	free_split(char **out, int k)
+void	free_split(char **out)
 {
-	while (k >= 0)
-		free(out[k--]);
+	while (*out)
+		free(*out);
 	free(out);
 }
 
@@ -74,7 +74,7 @@ char	**ft_split(char *str)
 		return (NULL);
 	if (!fill_split(str, out))
 	{
-		free_split(out, count - 1);
+		free_split(out);
 		return (NULL);
 	}
 	return (out);

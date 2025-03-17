@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bring_to_top.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:30:13 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/14 16:08:29 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/17 15:39:25 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void bring_to_top(t_stack *stack, int index, char stack_name)
+void	bring_to_top(t_stack *stack, int index, char stack_name)
 {
 	int	moves;
 
@@ -28,7 +28,7 @@ void bring_to_top(t_stack *stack, int index, char stack_name)
 	}
 }
 
-void bring_to_top_both_up(t_stack *stack_a, int moves_a,
+void	bring_to_top_both_up(t_stack *stack_a, int moves_a,
 							t_stack *stack_b, int moves_b)
 {
 	int	common;
@@ -44,8 +44,8 @@ void bring_to_top_both_up(t_stack *stack_a, int moves_a,
 		finish_rotate_up(stack_b, moves_b - moves_a, 'b');
 }
 
-void bring_to_top_both_down(t_stack *stack_a, int moves_a,
-                            t_stack *stack_b, int moves_b)
+void	bring_to_top_both_down(t_stack *stack_a, int moves_a,
+								t_stack *stack_b, int moves_b)
 {
 	int	common;
 

@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 16:35:44 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/17 17:18:44 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ int	*init_arr_int(int ac, char **av, int *size)
 		}
 		arr[i] = ft_atoi(av[i + 1]);
 		if (arr[i] < INT_MIN || arr[i] > INT_MAX)
-		{
-			write(2, "Error\n", 6);
-			exit (1);
-		}
+			exit (write(2, "Error\n", 6));
 		i++;
 	}
 	return (arr);

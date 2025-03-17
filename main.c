@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 16:33:00 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/17 17:14:29 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 	}
 	if (check_if_sorted(&stack_a))
 	{
-		write(2, "Error\n", 6);
+		//write(2, "Error\n", 6);
 		return (clean_exit(&stack_a, &stack_b, 0));
 	}
 	select_sorting(&stack_a, &stack_b);

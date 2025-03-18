@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chiarakappe <chiarakappe@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:46:05 by chiarakappe       #+#    #+#             */
-/*   Updated: 2025/03/14 16:07:45 by chiarakappe      ###   ########.fr       */
+/*   Updated: 2025/03/18 18:02:12 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,5 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	}
 	sort_three(stack_a);
 	while (stack_b->size > 0)
-	{
 		pa(stack_a, stack_b);
-/* 		if (stack_a->arr[0] > stack_a->arr[1])
-			sa(stack_a); */
-	}
 }

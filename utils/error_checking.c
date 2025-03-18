@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:45:06 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 16:38:05 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 17:57:41 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,59 +55,64 @@ int	check_if_sorted(t_stack *arr)
 	}
 	return (1);
 }
+/*
+Purpose of is_valid_int:
+Validate if a string represents a valid 32-bit integer (INT_MIN to INT_MAX).
+Key Features
+    Format Checks:
+        Allows optional leading + or - sign.
+        Rejects empty strings, lone signs (e.g., "-"), or non-digit characters.
+        Ensures all characters after the sign are digits (0-9).
+    Range Checks:
+        Uses long long to accumulate values during parsing to detect overflow.
+        Rejects values:
+            Positive: > INT_MAX (2147483647).
+            Negative: > INT_MAX + 1 (to cover INT_MIN = -2147483648).
+Return Value
+    0: Valid integer.
+    1: Invalid format or out-of-range value.
+Edge Cases Handled
+    Overflow: "2147483648", "-2147483649".
+    Invalid Formats: "12a3", "++123", "-".
+    Boundaries: "2147483647" (valid), "-2147483648" (valid).
+
+How It Works
+    Initial Checks:
+        First character must be +, -, or a digit.
+        Sign must be followed by a digit (rejects "-" or "+123a").
+    Sign Handling:
+        Converts + to 1 and - to -1 via ASCII math (sign = 44 - *ptr++).
+    Digit Parsing:
+        Accumulates digits into a long long to detect overflow early.
+    Final Check:
+        Ensures the entire string is consumed (no trailing non-digit characters).
+ */
 
 int	is_valid_int(const char *str)
 {
-	if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
+	const char	*ptr;
+	int			sign;
+	long long	num;
+
+	ptr = str;
+	sign = 1;
+	num = 0;
+	if (!(*ptr == '+' || *ptr == '-' || (*ptr >= '0' && *ptr <= '9')))
 		return (1);
-	if ((*str == '+' || *str == '-') && !(str[1] >= '0' && str[1] <= '9'))
+	if ((*ptr == '+' || *ptr == '-') && !(ptr[1] >= '0' && ptr[1] <= '9'))
 		return (1);
-	str++;
-	while (*str)
+	if (*ptr == '-' || *ptr == '+')
+		sign = 44 - *ptr++;
+	if (*ptr < '0' || *ptr > '9')
+		return (1);
+	while (*ptr >= '0' && *ptr <= '9')
 	{
-		if (!(*str >= '0' && *str <= '9'))
+		num = num * 10 + (*ptr++ - '0');
+		if ((sign == 1 && num > INT_MAX) || \
+			(sign == -1 && num > (long)INT_MAX + 1))
 			return (1);
-		str++;
 	}
+	if (*ptr != '\0')
+		return (1);
 	return (0);
 }
-
-// static int	skip_special_char(const char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
-// 		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\f')
-// 		i++;
-// 	return (i);
-// }
-
-
-// int	is_valid_int(const char *str)
-// {
-// 	int				i;
-// 	int				sign;
-// 	long long		result;
-
-// 	i = skip_special_char(str);
-// 	sign = 1;
-// 	result = 0;
-// 	if (str[i] == '-' || str[i] == '+')
-// 	{
-// 		if (str[i] == '-')
-// 			sign = -1;
-// 		i++;
-// 	}
-// 	if (str[i] < '0' || str[i] > '9') // check if there's no digit at all
-// 		exit (write (2, "Error\n", 6));
-// 	while (str[i] >= '0' && str[i] <= '9')
-// 	{
-// 		result = (result * 10) + (str[i] - '0');
-// 		if ((sign == 1 && result > INT_MAX)
-// 			|| (sign == -1 && result > (long long)INT_MAX + 1))
-// 			exit (write (2, "Error\n", 6));
-// 		i++;
-// 	}
-// 	return (1);
-// }

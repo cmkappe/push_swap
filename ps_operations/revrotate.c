@@ -6,11 +6,21 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:49 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 17:00:06 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:20:03 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+/*
+Purpose: Rotate the stack down – move the last element to the top.
+Key Steps:
+    Save the last element (last = stack->arr[size-1]).
+	Shift all elements down by 1 position.
+    Place last at the top (stack->arr[0] = last).
+Edge Cases:
+    Does nothing if the stack has ≤ 1 element.
+*/
 
 void	reverse_rotate(t_stack *stack)
 {

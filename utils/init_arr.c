@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 04:14:38 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 17:18:44 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:22:53 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	*init_arr_str(char **av, int *size)
 		if (is_valid_int(stack_data[i]))
 			exit (write(2, "Error\n", 6));
 		array[i] = ft_atoi(stack_data[i]);
-		if (array[i] < INT_MIN || array[i] > INT_MAX)
-			exit (write(2, "Error\n", 6));
 	}
 	i = -1;
 	while (stack_data[++i])
@@ -52,10 +50,7 @@ int	*init_arr_int(int ac, char **av, int *size)
 	while (i < *size)
 	{
 		if (is_valid_int(av[i + 1]))
-		{
-			write(2, "Error\n", 6);
-			exit (1);
-		}
+			exit (write(2, "Error\n", 6));
 		arr[i] = ft_atoi(av[i + 1]);
 		if (arr[i] < INT_MIN || arr[i] > INT_MAX)
 			exit (write(2, "Error\n", 6));

@@ -6,18 +6,11 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:25:15 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 17:14:29 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:14:32 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* static void	leaks(void)
-{
-	system ("leaks push_swap");
-}
- */
-
 
 int	parse_and_validate_args(int ac, char **av, t_stack *stack_a, int *size)
 {
@@ -81,13 +74,13 @@ void	select_sorting(t_stack *stack_a, t_stack *stack_b)
 	else
 		chunk_sort(stack_a, stack_b);
 }
+
 int	main(int ac, char **av)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
 	int		size;
 
-	// atexit(leaks);
 	stack_a = (t_stack){0};
 	stack_b = (t_stack){0};
 	if (ac == 1 || (ac == 2 && !av[1][0]))
@@ -102,10 +95,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	if (check_if_sorted(&stack_a))
-	{
-		//write(2, "Error\n", 6);
 		return (clean_exit(&stack_a, &stack_b, 0));
-	}
 	select_sorting(&stack_a, &stack_b);
 	return (clean_exit(&stack_a, &stack_b, 0));
 }

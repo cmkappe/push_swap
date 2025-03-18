@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 03:23:14 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/17 15:39:06 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 17:39:26 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void		sort_three(t_stack *stack);
 void		sort_five(t_stack *stack_a, t_stack *stack_b);
 
 void		chunk_sort(t_stack *stack_a, t_stack *stack_b);
-// void		partition_chunks(t_stack *stack_a, t_stack *stack_b);
 void		reassemble_stack(t_stack *stack_a, t_stack *stack_b);
 void		process_chunk(t_stack *stack_a, t_stack *stack_b,
 				int low, int high);

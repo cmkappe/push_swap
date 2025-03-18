@@ -6,15 +6,22 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:43 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 16:59:49 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:19:28 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* 2. Push Operations (pa, pb)
-pb: push the top element of stack a onto stack B;
-pa: push the top element of stack B onto stack A; */
+/*
+Purpose: Move the top element from stack_src to the top of stack_dest.
+Key Steps:
+    Shift all elements in stack_dest up by 1 position to make space.
+    Copy the top element of stack_src to stack_dest[0].
+    Shift all elements in stack_src down by 1 to fill the gap.
+    Update sizes: stack_dest->size++, stack_src->size--.
+Edge Cases:
+    Does nothing if stack_src is empty.
+*/
 
 void	push(t_stack *stack_src, t_stack *stack_dest)
 {
@@ -23,7 +30,7 @@ void	push(t_stack *stack_src, t_stack *stack_dest)
 	if (stack_src->size <= 0)
 		return ;
 	i = stack_dest->size;
-	while (i > 0) // shifts up destination stack
+	while (i > 0)
 	{
 		stack_dest->arr[i] = stack_dest->arr[i - 1];
 		i--;
@@ -35,9 +42,13 @@ void	push(t_stack *stack_src, t_stack *stack_dest)
 		stack_src->arr[i] = stack_src->arr[i + 1];
 		i++;
 	}
-	stack_dest->size++; // Update sizes
+	stack_dest->size++;
 	stack_src->size--;
 }
+
+/* 2. Push Operations (pa, pb)
+pb: push the top element of stack a onto stack B;
+pa: push the top element of stack B onto stack A; */
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {

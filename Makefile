@@ -6,7 +6,7 @@
 #    By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/06 15:51:42 by ckappe            #+#    #+#              #
-#    Updated: 2025/03/17 15:37:26 by ckappe           ###   ########.fr        #
+#    Updated: 2025/03/18 18:06:48 by ckappe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 HEADERS = push_swap.h
 
 # Source files
-SRCS = utils/array_prep.c utils/helpers.c utils/map_to_ranks.c \
+SRCS = utils/array_to_chunks.c utils/helpers.c utils/map_to_ranks.c \
 utils/error_checking.c utils/init_arr.c utils/split.c \
 ps_operations/push.c ps_operations/swap.c \
 ps_operations/rotate.c ps_operations/revrotate.c \

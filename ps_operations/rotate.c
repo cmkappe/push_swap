@@ -6,11 +6,21 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:35 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 16:59:33 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:20:33 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+/*
+Purpose: Rotate the stack up – move the top element to the bottom.
+Key Steps:
+    Save the first element (first = stack->arr[0]).
+    Shift all elements up by 1 position.
+    Place first at the bottom (stack->arr[size-1] = first).
+Edge Cases:
+    Does nothing if the stack has ≤ 1 element.
+*/
 
 void	rotate(t_stack *stack)
 {

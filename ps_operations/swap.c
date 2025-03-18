@@ -6,16 +6,21 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 10:43:29 by ckappe            #+#    #+#             */
-/*   Updated: 2025/03/14 17:01:21 by ckappe           ###   ########.fr       */
+/*   Updated: 2025/03/18 19:22:02 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* Swap Operations (sa, sb, ss)
-sa: swap the first two elements of stack A.
-sb: swap the first two elements of stack B.
-ss: swap both A and B at the same time. */
+/* 
+Purpose: Swap the top two elements of the stack.
+Key Steps:
+    Store the first element in a temporary variable.
+    Assign the second element to the first position.
+    Assign the temporary value to the second position.
+Edge Cases:
+    Does nothing if the stack has ≤ 1 element.
+*/
 
 void	ft_swap(t_stack *stack)
 {
@@ -29,6 +34,11 @@ void	ft_swap(t_stack *stack)
 		stack->arr[1] = temp;
 	}
 }
+
+/* Swap Operations (sa, sb, ss)
+sa: swap the first two elements of stack A.
+sb: swap the first two elements of stack B.
+ss: swap both A and B at the same time. */
 
 void	sa(t_stack	*stack_a)
 {
